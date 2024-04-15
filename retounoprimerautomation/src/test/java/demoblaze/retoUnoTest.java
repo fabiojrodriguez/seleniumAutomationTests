@@ -22,7 +22,7 @@ public class retoUnoTest {
         driver = new ChromeDriver();
         driver.get("https://demoblaze.com/");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @Test
@@ -38,9 +38,9 @@ public class retoUnoTest {
         // IR A CATEGORIA PHONES
         WebElement phonesOptions = driver.findElement(By.linkText("Phones"));
         phonesOptions.click();
-        
+
         // SELECCIONAR PRODUCTO HTC ONE M9
-        WebElement htcSearch = driver.findElement(By.linkText("HTC One M9"));
+        WebElement htcSearch = driver.findElement(By.xpath("//a[contains(.,'HTC One M9')]"));
         htcSearch.click();
 
         // PUNTOS DE CONTROL
@@ -127,15 +127,15 @@ public class retoUnoTest {
         WebElement MonitorsOptions = driver.findElement(By.linkText("Monitors"));
         MonitorsOptions.click();
 
-        // SELECCIONAR PRODUCTO DELL i7 8GB
+        // SELECCIONAR PRODUCTO ASUS FULL HD
         WebElement AsusFullHDSearch = driver.findElement(By.linkText("ASUS Full HD"));
         AsusFullHDSearch.click();
 
         // PUNTOS DE CONTROL
         WebElement priceAsusFullHD =  driver.findElement(By.xpath("//h3[@class='price-container']"));
-        assertEquals("$230 *includes tax", priceAsusFullHD.getText(), "El precio del portátil es el esperado");
+        assertEquals("$230 *includes tax", priceAsusFullHD.getText(), "El precio del monitor es el esperado");
         assertTrue(priceAsusFullHD.isDisplayed());
-        assertTrue(priceAsusFullHD.getText().contains("$230 *includes tax"), "El precio de la MacBook Pro se muestra correctamente");
+        assertTrue(priceAsusFullHD.getText().contains("$230 *includes tax"), "El precio del ASUS Full HD se muestra correctamente");
         
     }
 
